@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import ThreeCardReading from './components/ThreeCardReading';
+import ThreeCardReadingForm from './components/ThreeCardReadingForm';
 
 export default function App() {
+  const [reading, setReading] = React.useState(null);
+
+  const handleReadingCreated = (newReading) => {
+    setReading(newReading);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ThreeCardReadingForm onReadingCreated={handleReadingCreated} />
+      {reading && <ThreeCardReading reading={reading} />}
     </View>
   );
 }
@@ -16,5 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 20,
   },
 });
