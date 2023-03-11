@@ -99,7 +99,7 @@ export default function ThreeCardReading() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ question: question, rating: 5 }),
+      body: JSON.stringify({ question: question, rating: 3 }),
     };
     const response = await fetch('http://localhost:3002/threecard', requestOptions);
     const data = await response.json();
@@ -118,22 +118,25 @@ export default function ThreeCardReading() {
           <View style={styles.card}>
             <Image style={styles.cardImage} source={cardImages[reading.past_card]} />
             <Text style={styles.cardTitle}>{reading.past_card}</Text>
-            <Text style={styles.cardPosition}>Past</Text>
+            <Text style={styles.cardPosition}>Past Card</Text>
             <Text style={styles.cardInterpretation}>{reading.past_card_interpretation}</Text>
           </View>
           <View style={styles.card}>
             <Image style={styles.cardImage} source={cardImages[reading.present_card]} />
             <Text style={styles.cardTitle}>{reading.present_card}</Text>
-            <Text style={styles.cardPosition}>Present</Text>
+            <Text style={styles.cardPosition}>Present Card</Text>
             <Text style={styles.cardInterpretation}>{reading.present_card_interpretation}</Text>
           </View>
           <View style={styles.card}>
-            <Image style={styles.cardImage} source={cardImages[reading.past_card]} />
+            <Image style={styles.cardImage} source={cardImages[reading.future_card]} />
             <Text style={styles.cardTitle}>{reading.future_card}</Text>
-            <Text style={styles.cardPosition}>Future</Text>
+            <Text style={styles.cardPosition}>Future Card</Text>
             <Text style={styles.cardInterpretation}>{reading.future_card_interpretation}</Text>
           </View>
+          <View>
+          <Text style={styles.generalPosition}>General Interpretation</Text>
           <Text style={styles.generalInterpretation}>{reading.general_interpretation}</Text>
+          </View>
         </ScrollView>
       )}
     </View>
@@ -170,6 +173,12 @@ const styles = StyleSheet.create({
   },
   general: {
     marginTop: 20,
+  },
+  generalPosition: {
+    textTransform: 'uppercase',
+    fontSize: 12,
+    color: 'gray',
+    textAlign: 'center',
   },
   generalTitle: {
     fontSize: 18,
