@@ -102,7 +102,7 @@ export default function ThreeCardReading() {
         },
         body: JSON.stringify({ question: question, rating: 3 }),
       };
-      const response = await fetch('https://tarotnative.herokuapp.com/', requestOptions);
+      const response = await fetch('https://tarotnative.herokuapp.com/threecard', requestOptions);
       const data = await response.json();
       setReading(data);
     } catch (error) {
