@@ -109,8 +109,8 @@ export default function ThreeCardReading() {
   return (
     <View>
       <View style={{margin: 10}}>
-        <Text>Enter your question:</Text>
-        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} value={question} onChangeText={setQuestion}/>
+        <Text style={styles.questionBox}>Enter your question:</Text>
+        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion}/>
         <Button title="Get Reading" onPress={fetchReading}/>
       </View>
       {reading && (
@@ -141,6 +141,9 @@ export default function ThreeCardReading() {
 }
 
 const styles = StyleSheet.create({
+  questionBox: {
+    marginTop: 50,
+  },
   card: {
     marginBottom: 20,
     alignItems: 'center',
