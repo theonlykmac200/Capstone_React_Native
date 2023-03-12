@@ -140,6 +140,23 @@ export default function ThreeCardReading() {
     }
   };
   
+  const handleDelete = () => {
+    fetch(`https://tarotnative.herokuapp.com/readings/${reading._id}`, {
+      method: 'DELETE'
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete reading.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // TODO: Handle success message
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
 
   return (
@@ -182,7 +199,9 @@ export default function ThreeCardReading() {
             <Button title="Update Rating" onPress={handleRatingUpdate} />
             {reading.rating && (
               <Text style={styles.generalPosition}> Current Rating: {reading.rating}</Text>
+            
             )}
+            <Button title="Delete Reading" onPress={handleDelete} />  
           </View>
         </ScrollView>
       )}
