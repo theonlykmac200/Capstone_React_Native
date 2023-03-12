@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "nativeTarot",
-    "slug": "nativeTarot",
+    "name": "Tarot Ai",
+    "slug": "TarotAi",
+    "description": "Tarot Ai is a tarot card reading app that uses the power of the GPT-3 to provide your Three Card Reading. What will the cards tell you today?",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/The_Hanged_Man.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Major_Arcana.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,16 +16,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.theonlykmac.TarotAi"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.theonlykmac.TarotAi"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d688b494-debf-4f52-8f15-1aa25bbed52a"
+      }
     }
   }
 }
