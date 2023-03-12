@@ -92,6 +92,36 @@ const cardImages = {
 export default function ThreeCardReading() {
   const [question, setQuestion] = useState('');
   const [reading, setReading] = useState({});
+  const [newRating, setNewRating] = useState(null);
+
+  const handleRatingChange = (text) => {
+    setNewRating(text);
+  };
+
+  const handleRatingUpdate = () => {
+    console.log(reading._id)
+    fetch(`https://tarotnative.herokuapp.com/readings/${reading._id}/rating`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ rating: newRating }),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setNewRating(null);
+        setReading({ ...reading, rating: data.rating });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
 
   const fetchReading = async () => {
     try {
@@ -142,6 +172,17 @@ export default function ThreeCardReading() {
           <View>
           <Text style={styles.generalPosition}>General Interpretation</Text>
           <Text style={styles.generalInterpretation}>{reading.general_interpretation}</Text>
+          </View>
+          <View>
+            <TextInput
+            placeholder="Rate this reading from 1-5"
+            onChangeText={handleRatingChange}
+            value={newRating}
+            />
+            <Button title="Update Rating" onPress={handleRatingUpdate} />
+            {reading.rating && (
+              <Text style={styles.generalPosition}> Current Rating: {reading.rating}</Text>
+            )}
           </View>
         </ScrollView>
       )}
