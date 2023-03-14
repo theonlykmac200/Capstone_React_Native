@@ -23,7 +23,7 @@ const MyActivityIndicator = () => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Animated.Image
         source={require('../images/Spinner.png')}
-        style={{ width: 125, height: 150, transform: [{ rotate: spin }] }}
+        style={{ width: 250, height: 300, transform: [{ rotate: spin }] }}
       />
     </View>
   );
