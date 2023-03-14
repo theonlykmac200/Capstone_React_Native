@@ -5,6 +5,7 @@ import MyActivityIndicator from './components/ActivityMonitor';
 
 
 
+
 const images = require.context('../images/', true);
 const cardImages = {
   'Ace of Cups': images('./Ace_of_Cups.png'),
