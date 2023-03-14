@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { StyleSheet } from 'react-native';
-import MyActivityIndicator from './components/ActivityMonitor';
+import MyActivityIndicator from './ActivityMonitor';
 
 
 
