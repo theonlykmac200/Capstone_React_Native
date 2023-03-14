@@ -263,8 +263,9 @@ const styles = StyleSheet.create({
   },
   generalPosition: {
     textTransform: 'uppercase',
-    fontSize: 12,
+    fontSize: 18,
     color: 'gray',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   generalTitle: {
@@ -275,5 +276,7 @@ const styles = StyleSheet.create({
   generalInterpretation: {
     fontStyle: 'italic',
     textAlign: 'center',
+    marginLeft: '10%', 
+    marginRight: '10%'
     },
 });
