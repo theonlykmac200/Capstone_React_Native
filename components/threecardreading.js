@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, Button, Image, ScrollView, ActivityIndicator, Keyboard } from 'react-native';
 import { StyleSheet } from 'react-native';
 import MyActivityIndicator from './ActivityMonitor';
 
@@ -170,8 +170,15 @@ export default function ThreeCardReading() {
     <View>
       <View style={{margin: 10, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={styles.questionBox}>Enter your question:</Text>
-        <TextInput style={{height: 40, borderColor: '#BE93E4', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion}/>
-        <Button title="Get Reading" onPress={fetchReading} color='#BE93E4'/>
+        <TextInput style={{height: 40, borderColor: '#BE93E4', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion} ref={(input) => { this.questionInput = input; }}/>
+        <Button 
+          title="Get Reading" 
+          onPress={() => {
+          Keyboard.dismiss();
+          fetchReading();
+         }} 
+        color='#BE93E4'
+        />
       </View>
       {isLoading ? (
         <MyActivityIndicator />
