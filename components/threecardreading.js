@@ -161,13 +161,13 @@ export default function ThreeCardReading() {
 
   return (
     <View>
-      <View style={{margin: 10}}>
+      <View style={{margin: 10, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={styles.questionBox}>Enter your question:</Text>
-        <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion}/>
-        <Button title="Get Reading" onPress={fetchReading}/>
+        <TextInput style={{height: 40, borderColor: '#BE93E4', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion}/>
+        <Button title="Get Reading" onPress={fetchReading} color='#BE93E4'/>
       </View>
       {reading && (
-        <ScrollView style={{margin: 10}}>
+        <ScrollView style={{margin: 10, width: '100%'}}>
           <View style={styles.card}>
             <Image style={styles.cardImage} source={cardImages[reading.past_card]} />
             <Text style={styles.cardTitle}>{reading.past_card}</Text>
@@ -190,18 +190,19 @@ export default function ThreeCardReading() {
           <Text style={styles.generalPosition}>General Interpretation</Text>
           <Text style={styles.generalInterpretation}>{reading.general_interpretation}</Text>
           </View>
-          <View>
+          <View style={{ width: '70%', marginHorizontal: '15%'}}>
             <TextInput
             placeholder="Rate this reading from 1-5"
             onChangeText={handleRatingChange}
             value={newRating}
+            style={{ borderColor: '#BE93E4', borderWidth: 1, paddingHorizontal: 10, height: 40, width: '100%', marginBottom: 10}}
             />
-            <Button title="Update Rating" onPress={handleRatingUpdate} />
+            <Button title="Update Rating" onPress={handleRatingUpdate} style={{ width: '70%', marginBottom: 10}} color='#BE93E4' />
             {reading.rating && (
               <Text style={styles.generalPosition}> Current Rating: {reading.rating}</Text>
             
             )}
-            <Button title="Delete Reading" onPress={handleDelete} />  
+            <Button title="Delete Reading" onPress={handleDelete} style={{ width: '70%' }} color='#BE93E4' />  
           </View>
         </ScrollView>
       )}
