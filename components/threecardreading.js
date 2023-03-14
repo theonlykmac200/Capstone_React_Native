@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, Button, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { StyleSheet } from 'react-native';
+import MyActivityIndicator from './MyActivityIndicator';
+
+
 
 const images = require.context('../images/', true);
 const cardImages = {
@@ -93,6 +96,7 @@ export default function ThreeCardReading() {
   const [question, setQuestion] = useState('');
   const [reading, setReading] = useState({});
   const [newRating, setNewRating] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleRatingChange = (text) => {
     setNewRating(text);
@@ -124,6 +128,7 @@ export default function ThreeCardReading() {
 
 
   const fetchReading = async () => {
+    setIsLoading(true);
     try {
       const requestOptions = {
         method: 'POST',
@@ -138,6 +143,7 @@ export default function ThreeCardReading() {
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
   
   const handleDelete = () => {
@@ -166,7 +172,9 @@ export default function ThreeCardReading() {
         <TextInput style={{height: 40, borderColor: '#BE93E4', borderWidth: 1, width: 300 }} value={question} onChangeText={setQuestion}/>
         <Button title="Get Reading" onPress={fetchReading} color='#BE93E4'/>
       </View>
-      {reading && (
+      {isLoading ? (
+        <MyActivityIndicator />
+      ) : (
         <ScrollView style={{margin: 10, width: '100%'}}>
           <View style={styles.card}>
             <Image style={styles.cardImage} source={cardImages[reading.past_card]} />
@@ -221,6 +229,8 @@ const styles = StyleSheet.create({
   cardImage: {
     width: 150,
     height: 225,
+    borderWidth: 4,
+    borderColor: '#BE93E4',
   },
   cardTitle: {
     fontSize: 18,
